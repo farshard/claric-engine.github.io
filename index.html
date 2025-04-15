@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claric Engine | AI-Driven Character Psychology for Game Development</title>
+    <meta name="description" content="Claric Engine provides revolutionary tools for creating psychologically complex characters and emotionally resonant narratives in games.">
+    
+    <!-- Placeholder for actual CSS that would be in external file -->
+    <style>
+        :root {
+            --primary: #2A2356;
+            --secondary: #05F2DB;
+            --neutral: #3D4C53;
+            --dark: #121212;
+            --light: #f8f8f8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .neural-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('placeholder-neural-network.svg');
+            background-size: cover;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 50px;
+            margin-top: 60px;
+        }
+        
+        .feature {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .pricing-tiers {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+        
+        .pricing-tier {
+            background-color: var(--primary);
+            border-radius: 10px;
+            padding: 40px;
+            width: calc(25% - 30px);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-tier:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tier-popular {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .tier-name {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .tier-price {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .tier-price span {
+            font-size: 16px;
+            color: var(--light);
+        }
+        
+        .tier-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .tier-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .tier-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .testimonials {
+            margin-top: 60px;
+        }
+        
+        .testimonial {
+            background-color: var(--primary);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: var(--secondary);
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            width: calc(25% - 20px);
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive design would be expanded in actual implementation */
+        @media (max-width: 992px) {
+            .pricing-tier {
+                width: calc(50% - 20px);
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-column {
+                width: calc(50% - 15px);
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .pricing-tier {
+                width: 100%;
+            }
+            
+            .footer-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">CLARIC ENGINE</div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="https://farshard.com">Studio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Create Characters That Think, Feel, and Evolve</h1>
+            <p>Claric Engine is the first game development platform specializing in AI-driven character psychology and emergent narrative systems, enabling developers to create games with unprecedented emotional depth.</p>
+            <div class="hero-buttons">
+                <a href="#early-access" class="btn">Get Early Access</a>
+                <a href="#documentation" class="btn btn-outline">Documentation</a>
+            </div>
+        </div>
+        <div class="neural-bg"></div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Revolutionary Features</h2>
+                <p>Claric Engine reimagines what's possible in game development with a suite of innovative systems focused on psychological depth and emotional resonance.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <!-- Icon placeholder -->
+                    </div>
+                    <h3>Psychological Profile System</h3>
+                    <p>Model authentic character personalities beyond simplistic stats, creating NPCs with genuine psychological complexity that evolves over time based on experiences and player interactions.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <!-- Icon placeholder -->
+                    </div>
+                    <h3>Adaptive Dialogue Engine</h3>
+                    <p>Create truly responsive conversation systems where NPCs remember past interactions, form impressions, and respond with contextual awareness and emotional intelligence.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <!-- Icon placeholder -->
+                    </div>
+                    <h3>Emotional Simulation</h3>
+                    <p>Characters with genuine emotional memory and responses that feel authentic rather than scripted, creating new possibilities for player connection and immersion.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <!-- Icon placeholder -->
+                    </div>
+                    <h3>Procedural Narrative Tools</h3>
+                    <p>Stories that evolve based on player actions and choices, creating unique narrative experiences driven by psychological authenticity rather than branching dialogue trees.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#features-detail" class="btn">Explore All Features</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="demo" class="demo" style="background-color: var(--neutral);">
+        <div class="container">
+            <div class="section-title">
+                <h2>See It In Action</h2>
+                <p>Watch our flagship game "Echoes of the Unconscious" demonstrate the unique capabilities of Claric Engine.</p>
+            </div>
+            
+            <div style="background-color: var(--primary); height: 0; padding-bottom: 56.25%; position: relative; border-radius: 10px; overflow: hidden; margin-top: 50px;">
+                <!-- Video placeholder - would be replaced with an actual embed -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <div style="font-size: 24px; color: var(--secondary);">Demo Video Placeholder</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://echoes.claric.com" class="btn">Learn More About Our Game</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Flexible Pricing</h2>
+                <p>Choose the plan that fits your project's needs and scale as you grow. All tiers include access to our core psychological systems.</p>
+            </div>
+            
+            <div class="pricing-tiers">
+                <div class="pricing-tier">
+                    <h3 class="tier-name">Free Tier</h3>
+                    <div class="tier-price">$0</div>
+                    <ul class="tier-features">
+                        <li>Core engine features</li>
+                        <li>Up to $100K annual revenue</li>
+                        <li>Basic documentation</li>
+                        <li>Community support</li>
+                        <li>Claric attribution required</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-outline" style="width: 100%; text-align: center;">Get Started</a>
+                </div>
+                
+                <div class="pricing-tier">
+                    <div class="tier-popular">POPULAR</div>
+                    <h3 class="tier-name">Indie</h3>
+                    <div class="tier-price">$19<span>/month</span></div>
+                    <ul class="tier-features">
+                        <li>All engine features</li>
+                        <li>Unlimited revenue (5% royalty, capped at $12K/year)</li>
+                        <li>Full documentation</li>
+                        <li>Premium support</li>
+                        <li>Marketplace access</li>
+                    </ul>
+                    <a href="#signup" class="btn" style="width: 100%; text-align: center;">Choose Indie</a>
+                </div>
+                
+                <div class="pricing-tier">
+                    <h3 class="tier-name">Studio</h3>
+                    <div class="tier-price">$199<span>/seat/month</span></div>
+                    <ul class="tier-features">
+                        <li>All engine features</li>
+                        <li>Team collaboration tools</li>
+                        <li>Advanced support</li>
+                        <li>Custom revenue options</li>
+                        <li>Marketplace publishing</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-outline" style="width: 100%; text-align: center;">Choose Studio</a>
+                </div>
+                
+                <div class="pricing-tier">
+                    <h3 class="tier-name">Enterprise</h3>
+                    <div class="tier-price">Custom</div>
+                    <ul class="tier-features">
+                        <li>Custom implementation</li>
+                        <li>Dedicated support</li>
+                        <li>Training and workshops</li>
+                        <li>Source code access</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%; text-align: center;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="community" class="community" style="background-color: var(--primary);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Our Community</h2>
+                <p>Claric is more than an engine—it's a collaborative ecosystem for developers passionate about psychological depth in games.</p>
+            </div>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Claric Engine has revolutionized how we approach character development. Our players are connecting with our NPCs in ways we never thought possible."</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <!-- Author image placeholder -->
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Chen</h4>
+                            <p>Indie Developer, Mindscape Studios</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#discord" class="btn">Join Discord Community</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="early-access" class="early-access">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get Early Access</h2>
+                <p>Be among the first developers to create games with unprecedented psychological depth. Limited spots available.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#apply" class="btn">Apply for Early Access</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Engine</h3>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#">Early Access</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Showcase</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Developer Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="https://farshard.com">About Us</a></li>
+                        <li><a href="https://farshard.com#careers">Careers</a></li>
+                        <li><a href="https://farshard.com#contact">Contact</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Farshard, Inc. All rights reserved.</p>
+                <p>Claric Engine™, Claric™, and Echoes of the Unconscious™ are trademarks of Farshard, Inc.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

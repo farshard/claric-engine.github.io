@@ -1,0 +1,36 @@
+claric-engine.github.io/
+├── CNAME                  # Contains: claricengine.com
+├── .nojekyll              # Disables Jekyll processing
+├── index.html             # Engine homepage
+├── favicon.ico            # Engine favicon
+├── robots.txt             # Search engine instructions
+├── sitemap.xml            # Site structure for search engines
+├── assets/
+│   ├── css/
+│   │   ├── main.css       # Main stylesheet
+│   │   └── responsive.css # Mobile/responsive styles
+│   ├── js/
+│   │   └── main.js        # Main JavaScript file
+│   ├── fonts/
+│   │   └── ...            # Custom fonts
+│   └── images/
+│       ├── logo.svg       # Engine logo
+│       ├── features/      # Feature images
+│       └── demos/         # Demo screenshots
+├── docs/
+│   ├── index.html         # Documentation homepage
+│   ├── getting-started/
+│   │   └── index.html     # Getting started guide
+│   ├── api/
+│   │   └── index.html     # API documentation
+│   └── tutorials/
+│       └── index.html     # Tutorials section
+├── download/
+│   └── index.html         # Download page
+├── pricing/
+│   └── index.html         # Pricing page
+├── community/
+│   └── index.html         # Community page
+└── .github/
+    └── workflows/
+        └── deploy.yml     # (Optional) GitHub Actions workflow
